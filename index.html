@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>弹窗展示</title>
+		<link rel="stylesheet" href="css/DigShow.css">
+		<style>
+			
+			input{
+				
+				width: 8rem;
+				height: 4rem;
+				font-size: 0.96rem;
+				margin: 0.32rem;
+			}
+			
+		</style>
+	</head>
+	<script type="text/javascript">
+    	var scale = 1/window.devicePixelRatio;
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+scale+',minimum-scale='+scale+',maximum-scale='+scale+',user-scalable=no">');
+		var iWidth = document.documentElement.clientWidth; 
+		document.getElementsByTagName('html')[0].style.fontSize = iWidth/24 + 'px'; 
+	</script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/DigShow.js"></script>
+	<body>
+		<input value="一个按钮的弹窗" type="button"><br/>
+		<input value="两个按钮的弹窗"type="button"><br/>
+		<input value="提示的弹窗" type="button"><br/>
+		<input value="loading的弹窗"type="button"><br/>
+	</body>
+	
+	
+	<script>
+		
+		$('input').eq(0).on('click',function(){
+			
+			Alert('提示的内容','按钮的内容',function(){alert('点击按钮的回调函数')})
+		});
+		$('input').eq(1).on('click',function(){
+			
+			AlertTwo(
+				'提示的内容',
+				'第一个按钮内容',
+				'第二个按钮内容',
+				function(){alert('第一个按钮的回调')},
+				function(){alert('第二个按钮的回调')}
+			)
+		});
+		$('input').eq(2).on('click',function(){
+			
+			Dig('提示窗内容')
+		})
+		
+		$('input').eq(3).on('click',function(){
+			
+			loading('记载中qweqwe','Test');
+			
+			var Timer=setTimeout(function(){
+				
+				$('#Test').remove();
+			},1500)
+		})
+		
+		
+		
+		
+	</script>
+</html>
